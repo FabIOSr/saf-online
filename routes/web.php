@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Admin\User\Index;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('master');
 });
+
+Route::get('/admin/users', Index::class)->name('admin.users.index');

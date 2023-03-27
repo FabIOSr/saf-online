@@ -13,12 +13,22 @@
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+    <style>
+        .cursor {
+            cursor: pointer;
+        }
+    </style>
     @livewireStyles
 </head>
 
 <body class="hold-transition sidebar-mini text-sm">
     <!-- Site wrapper -->
     <div class="wrapper" id="app">
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center" style="height: 100%;">
+            <img class="animation__shake" src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60"
+                width="60">
+        </div>
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
@@ -176,6 +186,15 @@
                             </ul>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('admin.users.index') }}"
+                                class="nav-link {{ request()->routeIs('admin.users.index') ? 'active' : '' }}">
+                                <i class="ml-1 fas fa-users"></i>
+                                <p>
+                                    Users
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="../widgets.html" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
@@ -234,7 +253,7 @@
                             </button>
                         </div>
                     </div>
-                    <livewire:test />
+                    @yield('content')
                     <!-- /.card-body -->
                     <div class="card-footer">
                         Footer
@@ -272,9 +291,9 @@
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js"></script>
-    @vite('resources/js/app.js')    
+    @vite('resources/js/app.js')
     @livewireScripts
-    @stack('js')    
+    @stack('js')
 </body>
 
 </html>
